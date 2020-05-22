@@ -10,7 +10,6 @@ const Header = () => {
             <Link style={{margin: '5px'}} to="/about">
                 about
             </Link>
-            <Link to="/private">trend</Link>
         </header>
     )
 }
