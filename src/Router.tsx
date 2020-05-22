@@ -8,7 +8,7 @@ export default () => (
     <BrowserRouter>
         <Suspense fallback={<div>Loading...</div>}>
             <Switch>
-                <Route path="/">
+                <Route path="/" exact>
                     <Home />
                 </Route>
                 <Route path="/about">
