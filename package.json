@@ -6,9 +6,9 @@
     "author": "Suriel <mhecy98@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "build": "webpack --config webpack.prod.js",
+        "build": "webpack -p --config webpack.prod.js",
         "start": "webpack-dev-server --open --config webpack.dev.js",
-        "dll": "webpack --config webpack.dll.js",
+        "dll": "webpack -p --config webpack.dll.js",
         "lint": "eslint .",
         "postinstall": "yarn dll"
     },
