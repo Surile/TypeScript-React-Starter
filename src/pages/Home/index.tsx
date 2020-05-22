@@ -3,7 +3,7 @@ import Layout from '@/components/Layout'
 import './index.scss'
 
 export default () => {
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(1)
 
     const add = () => setCount(count + 1)
 
