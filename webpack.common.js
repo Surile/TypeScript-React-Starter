@@ -1,37 +1,31 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ROOT = path.resolve(__dirname)
 
 module.exports = {
     entry: './src/main.tsx',
     resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
-            // 'react-dom': '@hot-loader/react-dom',
-            '@': ROOT + '/src',
+            'react-dom': '@hot-loader/react-dom',
+            '@/': path.resolve(__dirname, 'src'),
+            '@/components': path.resolve(__dirname, 'src/components'),
+            '@/pages': path.resolve(__dirname, 'src/pages'),
+            '@/utils': path.resolve(__dirname, 'src/utils'),
+            '@/api': path.resolve(__dirname, 'src/api'),
+            '@/asset': path.resolve(__dirname, 'src/asset'),
         },
-        extensions: ['.tsx', '.ts', '.js'],
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Morecycle',
-            template: 'public/index.html',
-        }),
-    ],
-    output: {
-        filename: '[name].[hash:8].js',
-        chunkFilename: '[name].[chunkhash:8].chunk.js',
-        path: path.resolve(__dirname, 'build'),
-        publicPath: '',
     },
     module: {
         rules: [
             {
-                test: /\.(j|t)sx?$/,
-                include: [path.resolve('src')],
+                test: /\.(ts|tsx)?$/,
                 exclude: /node_modules/,
                 use: [
                     {
                         loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true,
+                            experimentalWatchApi: true,
+                        },
                     },
                     {
                         loader: 'babel-loader',
@@ -39,59 +33,23 @@ module.exports = {
                 ],
             },
             {
-                test: '/.css$/',
-                use: [
-                    {
-                        loader: 'style-loader',
-                    },
-                    {
-                        loader: "'css-loader'",
-                    },
-                ],
+                test: /\.(sa|sc|c)ss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
             },
             {
-                test: '/.scss$/',
-                use: [
-                    {
-                        loader: 'sass-loader',
-                    },
-                    {
-                        loader: 'css-loader',
-                    },
-                    {loader: 'style-loader'},
-                ],
-            },
-            // {
-            //     test: '/.less&/',
-            //     use: [
-            //         'style-loader',
-            //         "css-loader",
-            //         {
-            //             loader: 'less-loader',
-            //             options: {
-            //                 lessOptions: {
-            //                     javascriptEnabled: true,
-            //                     modifyVars: theme,
-            //                 },
-            //             },
-            //         },
-            //     ],
-            // },
-            {
-                test: '/.(png|svg|jpg|gif)$/',
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            limit: 1024 * 20,
-                        },
-                    },
-                ],
+                test: /\.(png|svg|jpg|gif)$/,
+                use: ['file-loader'],
             },
             {
-                test: '/.(woff|woff2|eot|ttf|otf)$/',
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: ['file-loader'],
             },
         ],
+    },
+    output: {
+        filename: '[name].[hash:8].js',
+        chunkFilename: '[name].[chunkhash:8].chunk.js',
+        path: path.resolve(__dirname, 'build'),
+        publicPath: '/',
     },
 }

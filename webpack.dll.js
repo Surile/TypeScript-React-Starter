@@ -1,9 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const pkg = require(path.join(process.cwd(), 'package.json'))
 
 module.exports = {
+    mode: 'none',
     name: 'vendor',
     entry: {
         vendor: pkg.dllDependencies,

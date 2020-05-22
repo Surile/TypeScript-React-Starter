@@ -1,12 +1,23 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
         "outDir": "./build/",
+        "lib": ["dom", "es6", "dom.iterable", "scripthost"],
         "noImplicitAny": true,
         "sourceMap": true,
-        "module": "es6",
+        "module": "ESNext",
         "target": "es5",
-        "jsx": "react",
+        "jsx": "preserve",
         "allowJs": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "paths": {
+            "@/": ["./src"],
+            "@/components": ["./src/components/*"],
+            "@/utils": ["./src/utils"],
+            "@/api": ["./src/api"],
+            "@/asset": ["./src/asset"]
+        }
     }
 }

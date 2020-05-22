@@ -1,8 +1,7 @@
-const path = require('path')
 const merge = require('webpack-merge')
 const common = require('./webpack.common')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -26,20 +25,37 @@ module.exports = merge(common, {
     module: {
         rules: [
             {
-                test: '/.css$/',
+                test: /\.css$/,
                 use: [
+                    MiniCssExtractPlugin.loader,
                     {
-                        loader: MiniCssExtractPlugin.loader,
+                        loader: require.resolve('css-loader'),
+                        options: {
+                            importLoaders: 1,
+                            minimize: true,
+                            sourceMap: true,
+                        },
                     },
+                    'sass-loader',
+                    {
+                        loader: require.resolve('postcss-loader'),
+                        options: postCSSLoaderOptions,
+                    },
+                ],
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
+                    'sass-loader',
+                    {
+                        loader: require.resolve('postcss-loader'),
+                        options: postCSSLoaderOptions,
+                    },
                 ],
             },
         ],
-    },
-    optimization: {
-        runtimeChunk: {
-            name: 'manifest',
-        },
     },
     plugins: [
         new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ['build']}),
@@ -64,5 +80,23 @@ module.exports = merge(common, {
     ],
     output: {
         publicPath: '',
+    },
+    optimization: {
+        minimizer: [new UglifyJsPlugin()],
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'common',
+                    chunks: 'all',
+                },
+                styles: {
+                    name: 'styles',
+                    test: /\.(c|le|sa|sc)ss$/,
+                    chunks: 'all',
+                    enforce: true,
+                },
+            },
+        },
     },
 })
