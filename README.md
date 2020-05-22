@@ -1,5 +1,7 @@
 # TypeScript-React-Starter
 
+Here is a live [demo](https://typescript-react.netlify.app/)
+
 ### features
 
 1. necessary loaders
@@ -10,7 +12,6 @@
 1. polyfill
 1. decorator, async/await, class properties supported.
 1. more
-
 
 ### setup
 
