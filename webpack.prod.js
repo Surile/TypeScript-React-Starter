@@ -1,9 +1,10 @@
 const merge = require('webpack-merge')
+const webpack = require('webpack')
+const path = require('path')
 const common = require('./webpack.common')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
-const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
@@ -67,7 +68,6 @@ module.exports = merge(common, {
             title: 'Production',
             template: 'public/index.html',
         }),
-        new InlineManifestWebpackPlugin('manifest'),
 
         new AddAssetHtmlPlugin({
             filepath: path.resolve(__dirname, './dll/vendor**.js'),
