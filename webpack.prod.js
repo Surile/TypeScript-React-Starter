@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const path = require('path')
 const common = require('./webpack.common')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const BundleAndlyzerPlugin = require('webpack-bundle-analyzer').BundleAndlyzerPlugin
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -78,6 +78,7 @@ module.exports = merge(common, {
             filename: '[name].[contenthash:8].css',
             chunkFilename: '[name].[contenthash:8].css',
         }),
+        new BundleAndlyzerPlugin(),
     ],
     output: {
         publicPath: '',
