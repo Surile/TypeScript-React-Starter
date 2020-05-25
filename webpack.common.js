@@ -1,11 +1,14 @@
 const path = require('path')
+const WebpackBar = require('webpackbar')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
     entry: './src/main.tsx',
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
-            'react-dom': '@hot-loader/react-dom',
+            // 'react-dom': '@hot-loader/react-dom',
             '@/': path.resolve(__dirname, 'src'),
             '@/components': path.resolve(__dirname, 'src/components'),
             '@/pages': path.resolve(__dirname, 'src/pages'),
@@ -52,4 +55,13 @@ module.exports = {
         path: path.resolve(__dirname, 'build'),
         publicPath: '/',
     },
+    plugins: [
+        new WebpackBar({
+            name: 'react-typescript-boilerplate',
+            // react 蓝
+            color: '#61dafb',
+        }),
+        new FriendlyErrorsPlugin(),
+        new CleanWebpackPlugin(),
+    ],
 }
