@@ -9,8 +9,7 @@
         "build": "webpack --config webpack.prod.js",
         "start": "webpack-dev-server --open --config webpack.dev.js",
         "dll": "webpack --config webpack.dll.js",
-        "lint": "eslint .",
-        "postinstall": "yarn dll"
+        "lint": "eslint ."
     },
     "husky": {
         "hooks": {
