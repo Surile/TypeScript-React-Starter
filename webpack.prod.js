@@ -8,6 +8,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
+const TerserPlugin = require('terser-webpack-plugin')
 
 const postCSSLoaderOptions = {
     ident: 'postcss',
@@ -59,7 +60,7 @@ module.exports = merge(common, {
         ],
     },
     plugins: [
-        new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ['build']}),
+        new CleanWebpackPlugin(),
         new webpack.DllReferencePlugin({
             context: __dirname,
             manifest: path.resolve(__dirname, 'dll/manifest.json'),
@@ -82,7 +83,7 @@ module.exports = merge(common, {
         publicPath: '',
     },
     optimization: {
-        minimizer: [new UglifyJsPlugin()],
+        minimizer: [new TerserPlugin()],
         splitChunks: {
             cacheGroups: {
                 vendor: {
