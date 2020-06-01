@@ -5,8 +5,8 @@
             "@babel/preset-env",
             {
                 "modules": "auto",
-                "useBuiltIns": "usage",
-                "corejs": 2
+                "useBuiltIns": "entry",
+                "corejs": 3
             }
         ],
         "@babel/preset-typescript"
