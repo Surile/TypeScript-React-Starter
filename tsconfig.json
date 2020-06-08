@@ -1,24 +1,30 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
-        "outDir": "./build/",
-        "lib": ["dom", "es6", "dom.iterable", "scripthost"],
-        "noImplicitAny": true,
-        "sourceMap": true,
-        "module": "ESNext",
-        "target": "es5",
-        "jsx": "preserve",
-        "declaration": true,
-        "allowJs": true,
+        "target": "es6",
+        "module": "esnext",
+        "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "removeComments": false,
+        "rootDirs": ["./"],
+        "baseUrl": "./",
         "paths": {
-            "@/": ["./src"],
-            "@/components": ["./src/components/*"],
-            "@/utils": ["./src/utils"],
-            "@/api": ["./src/api"],
-            "@/asset": ["./src/asset"]
-        }
+            "@/*": ["src/*"],
+            "@/components/*": ["src/components/*"],
+            "@/utils/*": ["src/utils/*"],
+            "@/api/*": ["src/api/*"],
+            "@/assets/*": ["src/assets/*"],
+            "@/services/*": ["src/services/*"]
+        },
+        "jsx": "react",
+        "alwaysStrict": true,
+        "noUnusedLocals": true,
+        "importHelpers": true,
+        "experimentalDecorators": true,
+        "resolveJsonModule": true,
+        "lib": ["es7", "dom"],
+        "skipLibCheck": true,
+        "typeRoots": ["node", "node_modules/@types", "./types"]
     }
 }
