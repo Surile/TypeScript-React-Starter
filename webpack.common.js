@@ -2,6 +2,7 @@ const path = require('path')
 const WebpackBar = require('webpackbar')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const DotenvFlow = require('dotenv-flow-webpack')
 
 module.exports = {
     entry: './src/main.tsx',
@@ -58,10 +59,12 @@ module.exports = {
     plugins: [
         new WebpackBar({
             name: 'react-typescript-boilerplate',
-            // react 蓝
-            color: '#61dafb',
+            color: '#1890ff',
         }),
         new FriendlyErrorsPlugin(),
         new CleanWebpackPlugin(),
+        new DotenvFlow({
+            default_node_env: 'development',
+        }),
     ],
 }
