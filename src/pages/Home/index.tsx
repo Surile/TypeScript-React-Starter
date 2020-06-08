@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from '@/components/Layout'
+import { baseURL } from '@/utils/consts'
 import './index.scss'
 
 export default () => {
@@ -23,6 +24,11 @@ export default () => {
                         <button onClick={add}>加</button>
                         <button onClick={minus}>减</button>
                     </div>
+                </div>
+                <div style={{
+                    padding: "20px"
+                }}>
+                    <a href={baseURL}>{baseURL}</a>
                 </div>
             </div>
         </Layout>

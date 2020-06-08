@@ -6,8 +6,12 @@
     "author": "Suriel <mhecy98@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "build": "webpack --p --config webpack.prod.js",
-        "start": "webpack-dev-server --open --config webpack.dev.js",
+        "build:stage": "cross-env NODE_ENV=stage webpack --p --config webpack.prod.js",
+        "build:prod": "cross-env NODE_ENV=production webpack --p --config webpack.prod.js",
+        "build": "cross-env NODE_ENV=development webpack --p --config webpack.prod.js",
+        "start:stage": "cross-env NODE_ENV=stage webpack-dev-server --open --config webpack.dev.js",
+        "start:prod": "cross-env NODE_ENV=production webpack-dev-server --open --config webpack.dev.js",
+        "start": "cross-env NODE_ENV=development webpack-dev-server --open --config webpack.dev.js",
         "dll": "webpack --config webpack.dll.js",
         "lint": "eslint .",
         "postinstall": "yarn dll"
@@ -71,6 +75,7 @@
         "eslint-plugin-react": "^7.20.0",
         "eslint-plugin-react-hooks": "^2.5.1",
         "file-loader": "^6.0.0",
+        "friendly-errors-webpack-plugin": "^1.7.0",
         "html-loader": "^1.1.0",
         "html-webpack-plugin": "^4.3.0",
         "inline-manifest-webpack-plugin": "^4.0.2",
@@ -92,6 +97,7 @@
         "webpack-bundle-analyzer": "^3.8.0",
         "webpack-cli": "^3.3.11",
         "webpack-dev-server": "^3.11.0",
-        "webpack-merge": "^4.2.2"
+        "webpack-merge": "^4.2.2",
+        "webpackbar": "^4.0.0"
     }
 }
