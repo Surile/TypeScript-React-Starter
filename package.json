@@ -6,10 +6,10 @@
     "author": "Suriel <mhecy98@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "build:stage": "cross-env NODE_ENV=stage webpack --p --config webpack.prod.js",
+        "build:stage": "cross-env NODE_ENV=staging webpack --p --config webpack.prod.js",
         "build:prod": "cross-env NODE_ENV=production webpack --p --config webpack.prod.js",
         "build": "cross-env NODE_ENV=development webpack --p --config webpack.prod.js",
-        "start:stage": "cross-env NODE_ENV=stage webpack-dev-server --open --config webpack.dev.js",
+        "start:stage": "cross-env NODE_ENV=staging webpack-dev-server --open --config webpack.dev.js",
         "start:prod": "cross-env NODE_ENV=production webpack-dev-server --open --config webpack.dev.js",
         "start": "cross-env NODE_ENV=development webpack-dev-server --open --config webpack.dev.js",
         "dll": "webpack --config webpack.dll.js",
