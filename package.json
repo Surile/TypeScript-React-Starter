@@ -35,13 +35,16 @@
         "antd": "^4.3.3",
         "axios": "^0.19.2",
         "react": "^16.13.1",
-        "react-dom": "^16.13.1"
+        "react-dom": "^16.13.1",
+        "single-spa": "^5.5.2"
     },
     "dllDependencies": [
         "react",
         "react-hot-loader",
         "@hot-loader/react-dom",
-        "react-router-dom"
+        "react-router-dom",
+        "single-spa",
+        "axios"
     ],
     "devDependencies": {
         "@babel/core": "^7.9.6",
