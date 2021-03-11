@@ -33,7 +33,7 @@
     },
     "dependencies": {
         "antd": "^4.3.3",
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "single-spa": "^5.5.2"
